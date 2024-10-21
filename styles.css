@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('hinhnen.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    font-size: 1.5em; 
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(230, 200, 255, 0.9); 
+    padding: 20px 40px; 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    height: 100px; 
+    margin-right: 20px; 
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; 
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin: 0 30px; 
+    font-size: 1.2em; 
+}
+
+nav a:hover {
+    color: #4CAF50;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 50px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    width: 400px; 
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 40px; 
+    color: #333;
+    font-size: 2em; 
+}
+
+input {
+    width: 90%;
+    padding: 20px; 
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.1em; 
+}
+
+button {
+    padding: 20px; 
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 95%;
+    font-size: 1.1em; 
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.hidden {
+    display: none;
+}
+
+#dashboard {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    width: 400px; 
+    margin: 20px auto;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+p {
+    margin-top: 20px; 
+    color: #333;
+    font-size: 1.1em;
+}
+
+span {
+    color: #4CAF50;
+    cursor: pointer;
+}
+
+#message {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px;
+    text-align: center;
+}
+

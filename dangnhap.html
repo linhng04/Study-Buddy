@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyBuddy</title>
+    <link rel="shortcut icon" type="image/png" href="lg.png"/>
+    <link rel="stylesheet" href="styles.css"> 
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <header class="navbar">
+        <img src="logo2.png" alt="Logo" class="logo"> 
+        <nav>
+            <a class="nav-link" href="#home">Trang chủ</a>
+            <a class="nav-link" href="#schedule">Thời gian biểu</a>
+            <a class="nav-link" href="#plan">Lập kế hoạch học tập</a>
+            <a class="nav-link" href="#gpa">GPA</a>
+            <a class="nav-link" href="#notifications">Thông báo</a>
+        </nav>        
+    </header>
+
+    <div class="container" id="login-form">
+        <h1>Đăng nhập</h1>
+        <input type="text" id="username" placeholder="Tài khoản" required>
+        <input type="password" id="password" placeholder="Mật khẩu" required>
+        <button onclick="login()">Đăng nhập</button>
+        <p>Chưa có tài khoản? <span onclick="toggleForms()">Đăng ký</span></p>
+    </div>
+
+    <div class="container hidden" id="register-form">
+        <h1>Đăng ký</h1>
+        <input type="text" id="new-username" placeholder="Tài khoản" required>
+        <input type="password" id="new-password" placeholder="Mật khẩu" required>
+        <button onclick="register()">Đăng ký</button>
+        <p>Đã có tài khoản? <span onclick="toggleForms()">Đăng nhập</span></p>
+    </div>
+
+    <div id="dashboard" class="hidden">
+        <h2>Bảng điều khiển</h2>
+        <div id="schedule">
+            <h3>Thời gian biểu của bạn:</h3>
+            <ul id="event-list"></ul>
+        </div>
+    </div>
+
+    <div id="message" class="hidden"></div>
+
+    
+</body>
+</html>
