@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kết quả học tập</title>
+  <style>
+    body {
+      background-color:cadetblue;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+    }
+    .column {
+      flex-basis: 30%;
+      margin-right: 10px; /* Khoảng cách giữa các cột */
+    }
+    .column.right {
+      flex-basis: 60%;
+      margin-left: 30px; /* Đẩy cột bên phải sang trái */
+    }
+    .info-box {
+      background-color: white;
+      border-radius: 5px;
+      padding: 5px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    .row label {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    .row input {
+      width: 50px; /* Chiều rộng ô nhập liệu */
+      padding: 3px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .table th, .table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center; /* Căn giữa văn bản trong ô */
+    }
+    .table th {
+      background-color: #f2f2f2;
+    }
+    .table input {
+      width: 100%; /* Chiều rộng ô nhập liệu trong bảng */
+      border: none;
+      text-align: center; /* Căn giữa văn bản trong ô nhập liệu */
+      outline: none;
+    }
+    .table td:nth-child(1) {
+      width: 30px; /* Ô "STT" */
+    }
+
+    .table td:nth-child(2) {
+      display: flex;
+      justify-content: center; /* Căn giữa cột "Môn học" */
+    }
+    /* .table td:nth-child(2) input {
+      width: 250%;
+    } */
+    .table td:nth-child(3) {
+      width: 60px; /* Ô "Số tín chỉ" mở rộng thêm */
+    }
+    .table td:nth-child(3) input {
+      width: 100%; /* Ô "Số tín chỉ" giữ chiều rộng */
+    }
+    .table td:nth-child(4) {
+      width: 40px; /* Ô "Điểm 10" */
+    }
+    .table td:nth-child(4) input {
+      width: 100%; /* Ô "Điểm 10" giữ chiều rộng */
+    }
+    .table td:nth-child(5) {
+      width: 40px; /* Ô "Điểm 4" */
+    }
+    .table td:nth-child(5) input {
+      width: 100%; /* Ô "Điểm 4" giữ chiều rộng */
+    }
+    .table td:nth-child(6) {
+    width: 40px; /* Ô "Chữ" */
+    }
+    .table td:nth-child(6) input {
+    width: 100%; /* Ô "Chữ" giữ chiều rộng */
+    }
+    .table td:nth-child(7) {
+    width: 50px; /* Ô "Hành động" - đã thu nhỏ */
+    }
+    .delete-row {
+      cursor: pointer;
+      color: red;
+    }
+    .add-row {
+      cursor: pointer;
+      color: blue;
+      text-decoration: underline;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="column">
+      <div class="info-box">
+        <h3>Thông tin tín chỉ</h3>
+        <div class="row">
+          <label>Số tín chỉ cần hoàn thành:</label>
+          <input type="number" id="totalCredits" value="0" step="1" min="0">
+        </div>
+        <div class="row">
+          <label>Số tín chỉ chưa hoàn thành:</label>
+          <input type="number" id="remainingCredits" value="0" disabled>
+        </div>
+        <div class="row">
+          <label>Số tín chỉ đã hoàn thành:</label>
+          <input type="number" id="completedCredits" value="0" step="1" min="0">
+        </div>
+      </div>
+      <div class="info-box">
+        <h3>Thông tin GPA</h3>
+        <div class="row">
+          <label>GPA mục tiêu:</label>
+          <input type="number" id="targetGPA" step="0.1" min="0" max="4">
+        </div>
+        <div class="row">
+          <label>GPA hiện tại:</label>
+          <input type="number" id="currentGPA" step="0.1" min="0" max="4" readonly>
+        </div>
+        <div class="row">
+          <label>Điểm trung bình tích lũy:</label>
+          <input type="number" id="cumulativeGPA" step="0.1" min="0" max="4" readonly>
+        </div>
+      </div>
+      <div class="info-box" style="text-align: center; padding: 20px; border: 1px solid #ccc;">
+        <a href="study_target.html"></a>
+        <h3>Mục tiêu học tập</h3>
+    </div>
+      <div class="info-box" style ="text-align: center; padding: 20px; border: 1px solid #ccc;">
+        <a href="study_statistics.html"></a>
+        <h3>Thống kê học tập</h3>
+      </div>
+    </div>
+    <div class="column right">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Môn học</th>
+            <th>Số tín chỉ</th>
+            <th>Điểm 10</th>
+            <th>Điểm 4</th>
+            <th>Chữ</th>
+            <th>Hành động</th> <!-- Thêm cột "Hành động" -->
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr>
+            <td><input type="number" value="1" readonly></td>
+            <td>
+              <input type="text" placeholder="Nhập môn học">
+            </td>
+            <td><input type="number" placeholder="Tín chỉ" step="1" min="0"></td>
+            <td><input type="number" placeholder="Điểm 10" step="1" min="0" max="10" oninput="updateGrade(this)"></td>
+            <td><input type="number" placeholder="Điểm 4" step="1" min="0" max="4" readonly></td>
+            <td><input type="text" placeholder="Chữ" readonly></td>
+            <td><span class="delete-row" onclick="deleteRow(this)">Xóa</span></td> <!-- Nút xóa -->
+          </tr>
+          <tr>
+            <td><input type="number" value="2" readonly></td>
+            <td>
+              <input type="text" placeholder="Nhập môn học">
+            </td>
+            <td><input type="number" placeholder="Tín chỉ" step="1" min="0"></td>
+            <td><input type="number" placeholder="Điểm 10" step="1" min="0" max="10" oninput="updateGrade(this)"></td>
+            <td><input type="number" placeholder="Điểm 4" step="1" min="0" max="4" readonly></td>
+            <td><input type="text" placeholder="Chữ" readonly></td>
+            <td><span class="delete-row" onclick="deleteRow(this)">Xóa</span></td> <!-- Nút xóa -->
+          </tr>
+        </tbody>
+      </table>
+      <div class="add-row" onclick="addRow()">Thêm môn học</div> <!--Thêm mới-->
+    </div>
+  </div>
+  <script>
+    const totalCreditsInput = document.getElementById('totalCredits');
+    const remainingCreditsInput = document.getElementById('remainingCredits');
+    const completedCreditsInput = document.getElementById('completedCredits');
+    const currentGPAInput = document.getElementById('currentGPA');
+    const cumulativeGPAInput = document.getElementById('cumulativeGPA');
+    const tableBody = document.getElementById('tableBody');
+    let rowCount = 2; // Đếm số hàng hiện tại, bắt đầu từ 2
+
+    totalCreditsInput.addEventListener('input', updateRemainingCredits);
+    completedCreditsInput.addEventListener('input', updateRemainingCredits);
+
+    function updateRemainingCredits() {
+      const totalCredits = parseInt(totalCreditsInput.value) || 0;
+      const completedCredits = parseInt(completedCreditsInput.value) || 0;
+      const remainingCredits = totalCredits - completedCredits;
+      remainingCreditsInput.value = remainingCredits >= 0 ? remainingCredits : 0;
+    }
+
+    function addRow() {
+      rowCount++; // Tăng số hàng
+      const newRow = `
+        <tr>
+          <td><input type="number" value="${rowCount}" readonly></td>
+          <td>
+            <input type="text" placeholder="Nhập môn học">
+          </td>
+          <td><input type="number" placeholder="Tín chỉ" step="1" min="0"></td>
+          <td><input type="number" placeholder="Điểm 10" step="1" min="0" max="10" oninput="updateGrade(this)"></td>
+          <td><input type="number" placeholder="Điểm 4" step="1" min="0" max="4" readonly></td>
+          <td><input type="text" placeholder="Chữ" readonly></td>
+          <td><span class="delete-row" onclick="deleteRow(this)">Xóa</span></td> <!-- Nút xóa mới -->
+        </tr>
+      `;
+      tableBody.insertAdjacentHTML('beforeend', newRow); // Thêm hàng mới vào bảng
+    }
+
+    function deleteRow(btn) {
+      const row = btn.closest('tr'); // Lấy hàng cha của nút xóa
+      row.remove(); // Xóa hàng
+      updateRowNumbers(); // Cập nhật lại số thứ tự
+      updateCurrentGPA(); // Cập nhật GPA hiện tại
+    }
+
+    function updateRowNumbers() {
+      const rows = tableBody.getElementsByTagName('tr');
+      for (let i = 0; i < rows.length; i++) {
+        rows[i].children[0].children[0].value = i + 1; // Cập nhật số thứ tự
+      }
+      rowCount = rows.length; // Cập nhật số hàng hiện tại
+    }
+
+    function updateGrade(input) {
+      const row = input.closest('tr'); // Lấy hàng cha của ô nhập liệu
+      const score10 = parseFloat(input.value) || 0; // Giá trị điểm hệ số 10
+      const score4Input = row.children[4].children[0]; // Ô điểm hệ số 4
+      const letterInput = row.children[5].children[0]; // Ô điểm chữ
+
+      // Tính điểm hệ số 4
+      let score4;
+      if (score10 >= 9.0) {
+        score4 = 4.0;
+        letterInput.value = "A+";
+      } else if (score10 >= 8.5) {
+        score4 = 3.7;
+        letterInput.value = "A";
+      } else if (score10 >= 8.0) {
+        score4 = 3.5;
+        letterInput.value = "B+";
+      } else if (score10 >= 7.0) {
+        score4 = 3.0;
+        letterInput.value = "B";
+      } else if (score10 >= 6.5) {
+        score4 = 2.5;
+        letterInput.value = "C+";
+      } else if (score10 >= 5.5) {
+        score4 = 2.0;
+        letterInput.value = "C";
+      } else if (score10 >= 5.0) {
+        score4 = 1.5;
+        letterInput.value = "D+";
+      } else if (score10 >= 4.0) {
+        score4 = 1.0;
+        letterInput.value = "D";
+      } else {
+        score4 = 0.0;
+        letterInput.value = "F";
+      }
+
+      // Cập nhật điểm hệ số 4
+      score4Input.value = score4.toFixed(1);
+      updateCurrentGPA(); // Cập nhật GPA hiện tại
+    }
+
+    function updateCurrentGPA() {
+      const rows = tableBody.getElementsByTagName('tr');
+      let totalPoints = 0;
+      let totalCredits = 0;
+
+      for (let row of rows) {
+        const score4 = parseFloat(row.children[4].children[0].value) || 0; // Điểm hệ số 4
+        const credits = parseFloat(row.children[2].children[0].value) || 0; // Số tín chỉ
+        totalPoints += score4 * credits;
+        totalCredits += credits;
+      }
+
+      const currentGPA = totalCredits > 0 ? totalPoints / totalCredits : 0;
+      currentGPAInput.value = currentGPA.toFixed(2);
+      cumulativeGPAInput.value = currentGPA.toFixed(2); // Cập nhật điểm trung bình tích lũy
+    }
+  </script>
+</body>
+</html>
