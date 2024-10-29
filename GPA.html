@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* CSS styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #c0392b;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .container {
+      display: flex;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .left-column {
+      flex: 1;
+      margin-right: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .right-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .box {
+      background-color: #fff; /* Đảm bảo nền là trắng */
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+      cursor: pointer;
+      text-decoration: none; /* Loại bỏ gạch chân */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .box:hover {
+      transform: translateY(-5px);
+    }
+    .box h2 {
+      margin-top: 0;
+      font-size: 1.5em;
+      color: #c0392b;
+    }
+    .box p {
+      margin-bottom: 0;
+      font-size: 1em;
+      line-height: 1.5;
+      color: #333; /* Đảm bảo màu chữ là tối */
+    }
+    .about-me {
+      background-color: #c0392b;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    .about-me h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GPA</h1>
+    <p>Tính điểm tín chỉ và mục tiêu</p>
+  </header>
+  <div class="container">
+    <div class="left-column">
+      <div class="box">
+        <h2>Giới thiệu</h2>
+        <p>Study Buddy là ứng dụng tính điểm trung bình tích lũy theo tín chỉ. Nó sẽ giúp bạn đưa ra được mục tiêu cụ thể để bạn có thể dễ dàng biết được mình cần cố gắng thêm bao nhiêu tín chỉ A, B nữa!</p>
+      </div>
+    </div>
+    <div class="right-column">
+      <a href="study_result.html" class="box">
+        <h2>Kết quả học tập</h2>
+        <p>Xem kết quả học tập của bạn.</p>
+      </a>
+      <div class="box">
+        <h2>Mục tiêu học tập</h2>
+        <p>Đặt mục tiêu cho học tập của bạn.</p>
+      </div>
+      <div class="box">
+        <h2>Thống kê</h2>
+        <p>Xem thống kê học tập của bạn.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    // JavaScript code
+    // Add any interactive functionality here
+  </script>
+</body>
+</html>
