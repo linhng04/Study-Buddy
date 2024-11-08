@@ -53,7 +53,6 @@
       text-align: center;
       transition: transform 0.2s;
       cursor: pointer;
-      text-decoration: none; /* Loại bỏ gạch chân */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -73,17 +72,10 @@
       line-height: 1.5;
       color: #333; /* Đảm bảo màu chữ là tối */
     }
-    .about-me {
-      background-color: #c0392b;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      border-radius: 8px;
-      margin-top: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-    .about-me h2 {
-      margin-top: 0;
+    /* Loại bỏ gạch chân từ các liên kết */
+    a {
+      text-decoration: none; /* Loại bỏ gạch chân */
+      color: inherit; /* Giữ màu chữ giống với màu văn bản xung quanh */
     }
   </style>
 </head>
@@ -105,18 +97,20 @@
         <p>Xem kết quả học tập của bạn.</p>
       </a>
       <div class="box">
-        <h2>Mục tiêu học tập</h2>
-        <p>Đặt mục tiêu cho học tập của bạn.</p>
+        <a href="study_target.html">
+          <h2>Mục tiêu học tập</h2>
+          <p>Đặt mục tiêu cho học tập của bạn.</p>
+        </a>
       </div>
       <div class="box">
-        <h2>Thống kê</h2>
-        <p>Xem thống kê học tập của bạn.</p>
+        <a href="study_statistics.html">
+          <h2>Thống kê</h2>
+          <p>Xem thống kê học tập của bạn.</p>
+        </a>
       </div>
     </div>
   </div>
   <script>
-    // JavaScript code
-    // Add any interactive functionality here
   </script>
 </body>
 </html>
