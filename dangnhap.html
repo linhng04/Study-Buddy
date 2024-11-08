@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudyBuddy</title>
-    <link rel="shortcut icon" type="image/png" href="lg.png"/>
+    <link rel="shortcut icon" type="image/png" href="/Study-Buddy/images/lg.png"/>
     <link rel="stylesheet" href="styles.css"> 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
 
     <header class="navbar">
-        <img src="logo2.png" alt="Logo" class="logo"> 
+        <img src="/Study-Buddy/images/logo2.png" alt="Logo" class="logo"> 
         <nav>
             <a class="nav-link" href="#home">Trang chủ</a>
             <a class="nav-link" href="#schedule">Thời gian biểu</a>
@@ -27,6 +27,7 @@
         <input type="password" id="password" placeholder="Mật khẩu" required>
         <button onclick="login()">Đăng nhập</button>
         <p>Chưa có tài khoản? <span onclick="toggleForms()">Đăng ký</span></p>
+        <p><span onclick="showForgotPassword()">Quên mật khẩu?</span></p>
     </div>
 
     <div class="container hidden" id="register-form">
@@ -37,16 +38,36 @@
         <p>Đã có tài khoản? <span onclick="toggleForms()">Đăng nhập</span></p>
     </div>
 
+    <div class="container hidden" id="forgot-password-form">
+        <h1>Quên mật khẩu</h1>
+        <input type="text" id="forgot-username" placeholder="Email/Số điện thoại" required>
+        <button onclick="resetPassword()">Gửi yêu cầu</button>
+        <p><span onclick="toggleForgotPassword()">Quay lại đăng nhập</span></p>
+    </div>
+
     <div id="dashboard" class="hidden">
         <h2>Bảng điều khiển</h2>
-        <div id="schedule">
+
+        <div id="schedule-container" class="box">
             <h3>Thời gian biểu của bạn:</h3>
             <ul id="event-list"></ul>
+        </div>
+
+        <div id="add-event-container" class="box">
+            <h3>Thêm sự kiện</h3>
+            <input type="text" id="event-input" placeholder="Nhập sự kiện mới" required>
+            <button onclick="addEvent()">Thêm sự kiện</button>
+        </div>
+
+        <div id="gpa-container" class="box">
+            <h3>Nhập điểm và tính GPA</h3>
+            <input type="text" id="gpa-input" placeholder="Điểm số (cách nhau bằng dấu phẩy)" required>
+            <button onclick="calculateGPA()">Tính GPA</button>
+            <p id="gpa-result"></p>
         </div>
     </div>
 
     <div id="message" class="hidden"></div>
 
-    
 </body>
 </html>
