@@ -33,6 +33,9 @@
       margin-bottom: 30px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
+    /* .info-box:hover {
+      transform: translateY(-5px);
+    } */
     .row {
       display: flex;
       justify-content: space-between;
@@ -44,7 +47,7 @@
       margin-right: 5px;
     }
     .row input {
-      width: 50px; /* Chiều rộng ô nhập liệu */
+      width: 50px; 
       padding: 3px;
       border: 1px solid #ccc;
       border-radius: 3px;
@@ -56,16 +59,16 @@
     .table th, .table td {
       padding: 10px;
       border: 1px solid #ddd;
-      text-align: center; /* Căn giữa văn bản trong ô */
+      text-align: center; 
     }
     .table th {
       background-color: #f2f2f2;
     }
     .table input {
       width: 100%; /* Chiều rộng ô nhập liệu trong bảng */
-      border: none;
+      /* border: none; */
       text-align: center; /* Căn giữa văn bản trong ô nhập liệu */
-      outline: none;
+     
     }
     .table td:nth-child(1) {
       width: 30px; /* Ô "STT" */
@@ -115,6 +118,11 @@
       text-decoration: underline;
       margin-top: 10px;
     }
+    /* Loại bỏ gạch chân từ các liên kết */
+    a {
+      text-decoration: none; /* Loại bỏ gạch chân */
+      color: inherit; /* Giữ màu chữ giống với màu văn bản xung quanh */
+    }
   </style>
 </head>
 <body>
@@ -151,12 +159,16 @@
         </div>
       </div>
       <div class="info-box" style="text-align: center; padding: 20px; border: 1px solid #ccc;">
-        <a href="study_target.html"></a>
-        <h3>Mục tiêu học tập</h3>
+        <a href="study_target.html">
+          <h2>Mục tiêu học tập</h2>
+          <p>Đặt mục tiêu cho học tập của bạn.</p>
+        </a>
     </div>
       <div class="info-box" style ="text-align: center; padding: 20px; border: 1px solid #ccc;">
-        <a href="study_statistics.html"></a>
-        <h3>Thống kê học tập</h3>
+        <a href="study_statistics.html">
+          <h2>Thống kê</h2>
+          <p>Xem thống kê học tập của bạn.</p>
+        </a>
       </div>
     </div>
     <div class="column right">

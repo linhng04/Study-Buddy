@@ -16,95 +16,131 @@
             color: white;
             text-align: center;
             padding: 20px;
+            position: relative;
         }
-        .info-box {
+        .info-table {
             background-color: white;
             margin: 20px;
             padding: 15px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 600px;
         }
-        .info-box h3 {
+        .info-table h3 {
             margin-top: 0;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        table {
+        .info-table table {
             width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            table-layout: fixed; /* Cố định kích thước cột */
         }
         th, td {
-            border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
         }
         th {
             background-color: #4CAF50;
             color: white;
         }
-        /* Đặt chiều rộng cho từng cột */
-        th:nth-child(1), td:nth-child(1) { width: 20%; } /* Tên Môn */
-        th:nth-child(2), td:nth-child(2) { width: 10%; } /* Số Tín */
-        th:nth-child(3), td:nth-child(3) { width: 10%; } /* Chuyên Cần */
-        th:nth-child(4), td:nth-child(4) { width: 10%; } /* Thi Giữa Kỳ */
-        th:nth-child(5), td:nth-child(5) { width: 10%; } /* Thi Cuối Kỳ */
-        th:nth-child(6), td:nth-child(6) { width: 15%; } /* Tỉ Lệ Tính Điểm */
-        th:nth-child(7), td:nth-child(7) { width: 10%; } /* Trung Bình Môn (Hệ 10) */
-        th:nth-child(8), td:nth-child(8) { width: 10%; } /* Trung Bình Môn (Hệ 4) */
-        th:nth-child(9), td:nth-child(9) { width: 5%; }  /* Điểm Chữ */
+        .table-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            margin: 40px auto;
+            width: 95%;
+            border: 2px dashed #4CAF50;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .small-table {
+            flex: 1;
+            margin: 0 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
         @media (max-width: 600px) {
-            .grid {
-                grid-template-columns: 1fr; /* Chuyển sang 1 cột trên màn hình nhỏ */
+            .info-table {
+                width: 100%; 
             }
-            table {
-                font-size: 12px; /* Giảm kích thước chữ cho màn hình nhỏ */
+            .table-container {
+                flex-direction: column; 
+                align-items: center; 
+            }
+            .small-table {
+                margin: 10px 0; 
             }
         }
     </style>
 </head>
 <body>
-
     <div class="header">
         <h1>Mục Tiêu Học Tập</h1>
     </div>
-
-    <div class="info-box" style="max-width: 400px; margin: 20px auto; text-align: center;">
-        <h3>Mục Tiêu</h3>
-        <p>Tổng tín chỉ đã đăng ký: <input type="number" id="totalCredits" placeholder="Tổng tín"></p>
-        <p>Số tín chỉ cần đạt điểm A: <input type="number" id="creditsNeededA" placeholder="Điểm A"></p>
-        <p>Số tín chỉ cần đạt điểm B: <input type="number" id="creditsNeededB" placeholder="Điểm B"></p>
+    <div class="info-table" style="margin: 20px auto; padding: 0; width: 100%;">
+        <table style="border-collapse: collapse; width: 100%; border: 2px solid #abd9ac;">
+            <tr style="background-color: #baf0c6;">
+                <td rowspan="3" style="border: 2px solid #4CAF50; padding: 8px;">
+                    <p style="text-align: center">Mục Tiêu</p>
+                    <p>Cho học kỳ hiện tại</p>
+                </td>
+                <td style="border: 2px solid #4CAF50; padding: 8px;">Tổng Tín Chỉ Đã Đăng Ký</td>
+                <td style="border: 2px solid #4CAF50; padding: 8px; width:50px;">
+                    <input type="number" id="totalCredits" placeholder="" style="width: 100%; border: none; background: transparent; outline: none;">
+                </td>
+            </tr>
+            <tr style="background-color: #88e688;">
+                <td style="border: 2px solid #4CAF50; padding: 8px;">Số Tín Chỉ Cần Đạt Điểm A</td>
+                <td style="border: 2px solid #4CAF50; padding: 8px; width:50px;">
+                    <input type="number" id="creditsNeededA" placeholder="" style="width: 100%; border: none; background: transparent; outline: none;">
+                </td>
+            </tr>
+            <tr style="background-color: #70d57d;">
+                <td style="border: 2px solid #4CAF50; padding: 8px;">Số Tín Chỉ Cần Đạt Điểm B</td>
+                <td style="border: 2px solid #4CAF50; padding: 8px; width:50px;">
+                    <input type="number" id="creditsNeededB" placeholder="" style="width: 100%; border: none; background: transparent; outline: none;">
+                </td>
+            </tr>
+        </table>
     </div>
-
-    <div class="grid">
-        <div class="info-box">
-            <h3>Học cải thiện môn D</h3>
-            <p>Dự kiến cải thiện: <input type="text" id="improvementD" placeholder="Dự kiến cải thiện"></p>
-            <p>Kết quả dự kiến cải thiện: <input type="number" id="resultD" placeholder="Kết quả cải thiện"></p>
+    
+    <div class="table-container">
+        <div class="small-table">
+            <h3 style="background-color: #baf0c6; margin: 0; padding: 8px; text-align: center;">Bảng 1</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="background-color: #baf0c6;">
+                    <th style="border: 2px solid #4CAF50; padding: 8px;">Thông Tin 1</th>
+                    <td style="border: 2px solid #4CAF50; padding: 8px;">
+                        <input type="text" placeholder="Nhập thông tin" style="width: 100%; border: none; background: transparent; outline: none;">
+                    </td>
+                </tr>
+            </table>
         </div>
-        <div class="info-box">
-            <h3>Học lại môn F</h3>
-            <p>Dự kiến học lại môn F: <input type="text" id="repeatF" placeholder="Học lại môn F"></p>
-            <p>Kết quả học lại dự kiến: <input type="number" id="resultF" placeholder="Kết quả học lại"></p>
+        <div class="small-table">
+            <h3 style="background-color: #baf0c6; margin: 0; padding: 8px; text-align: center;">Bảng 2</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="background-color: #baf0c6;">
+                    <th style="border: 2px solid #4CAF50; padding: 8px;">Thông Tin 2</th>
+                    <td style="border: 2px solid #4CAF50; padding: 8px;">
+                        <input type="text" placeholder="Nhập thông tin" style="width: 100%; border: none; background: transparent; outline: none;">
+                    </td>
+                </tr>
+            </table>
         </div>
-        <div class="info-box">
-            <h3>Dự kiến cải thiện</h3>
-            <p>Dự kiến cải thiện: <input type="text" id="futureImprovement" placeholder="Dự kiến cải thiện"></p>
-            <p>Kết quả cải thiện: <input type="number" id="futureResult" placeholder="Kết quả cải thiện"></p>
+        <div class="small-table">
+            <h3 style="background-color: #baf0c6; margin: 0; padding: 8px; text-align: center;">Bảng 3</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="background-color: #baf0c6;">
+                    <th style="border: 2px solid #4CAF50; padding: 8px;">Thông Tin 3</th>
+                    <td style="border: 2px solid #4CAF50; padding: 8px;">
+                        <input type="text" placeholder="Nhập thông tin" style="width: 100%; border: none; background: transparent; outline: none;">
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
-
     <div class="info-box">
-        <h3>Bảng kết quả dự kiến của kỳ học</h3>
-        <table>
+        <h3 style="text-align: center;">Bảng kết quả dự kiến của kỳ học</h3>
+        <table class="forecast-table">
             <thead>
                 <tr>
                     <th>Tên Môn</th>
@@ -137,82 +173,112 @@
         <p id="overallAvg10">Trung Bình Tất Cả (Hệ 10): <strong>0</strong></p>
         <p id="overallAvg4">Trung Bình Tất Cả (Hệ 4): <strong>0</strong></p>
     </div>
+    
+    <style>
+        .forecast-table {
+            width: 95%;
+            border-collapse: collapse;
+            margin: 20px 20px;
+            table-layout: fixed; 
+        }
+        .forecast-table th, .forecast-table td {
+            border: 1px solid #ddd;
+            padding: 5px; /* Giảm khoảng cách bên trong ô */
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .forecast-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        /* Đặt chiều rộng cho từng cột */
+        .forecast-table th:nth-child(1), .forecast-table td:nth-child(1) { width: 30%; } /* Tên Môn */
+        .forecast-table th:nth-child(2), .forecast-table td:nth-child(2) { width: 5%; }  /* Số Tín */
+        .forecast-table th:nth-child(3), .forecast-table td:nth-child(3) { width: 10%; } /* Chuyên Cần */
+        .forecast-table th:nth-child(4), .forecast-table td:nth-child(4) { width: 10%; } /* Thi Giữa Kỳ */
+        .forecast-table th:nth-child(5), .forecast-table td:nth-child(5) { width: 10%; } /* Thi Cuối Kỳ */
+        .forecast-table th:nth-child(6), .forecast-table td:nth-child(6) { width: 15%; } /* Tỉ Lệ Tính Điểm */
+        .forecast-table th:nth-child(7), .forecast-table td:nth-child(7) { width: 7%; }  /* Trung Bình Môn (Hệ 10) */
+        .forecast-table th:nth-child(8), .forecast-table td:nth-child(8) { width: 7%; }  /* Trung Bình Môn (Hệ 4) */
+        .forecast-table th:nth-child(9), .forecast-table td:nth-child(9) { width: 5%; }  /* Điểm Chữ */
+    </style>
+<script>
+    function calculateGrade(element) {
+        const row = element.closest('tr');
+        const attendance = parseFloat(row.querySelector('.attendance').value) || 0;
+        const midterm = parseFloat(row.querySelector('.midterm').value) || 0;
+        const final = parseFloat(row.querySelector('.final').value) || 0;
+        const credits = parseFloat(row.querySelector('.credits').value) || 0;
 
-    <script>
-        function calculateGrade(element) {
-            const row = element.closest('tr');
-            const attendance = parseFloat(row.querySelector('.attendance').value) || 0;
-            const midterm = parseFloat(row.querySelector('.midterm').value) || 0;
-            const final = parseFloat(row.querySelector('.final').value) || 0;
+        // Lấy tỷ lệ từ ô input
+        const weightInput = row.querySelector('.weight').value;
+        const weights = weightInput.split(':').map(w => parseFloat(w.trim()) / 100); // Chia tỷ lệ cho 100
+
+        // Tính điểm trung bình hệ 10
+        const average10 = (attendance * (weights[0] || 0) + midterm * (weights[1] || 0) + final * (weights[2] || 0)).toFixed(2);
+        row.querySelector('.avg-10').textContent = average10;
+
+        // Tính toán điểm trung bình hệ 4
+        const average4 = (average10 / 10 * 4).toFixed(2);
+        row.querySelector('.avg-4').textContent = average4;
+
+        // Tính điểm chữ
+        let grade;
+        if (average10 >= 9 && average10 <= 10) grade = 'A+';
+        else if (average10 >= 8.5 && average10 < 9) grade = 'A';
+        else if (average10 >= 8 && average10 < 8.5) grade = 'B+';
+        else if (average10 >= 7 && average10 < 8) grade = 'B';
+        else if (average10 >= 6.5 && average10 < 7) grade = 'C+';
+        else if (average10 >= 5.5 && average10 < 6.5) grade = 'C';
+        else if (average10 >= 5 && average10 < 5.5) grade = 'D+';
+        else if (average10 >= 4 && average10 < 5) grade = 'D';
+        else grade = 'F';
+        row.querySelector('.grade').textContent = grade;
+
+        calculateOverallAverage();
+    }
+
+    function addSubject() {
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td><input type="text" class="subject-name" placeholder="Tên môn"></td>
+            <td><input type="number" class="credits" placeholder="Số tín" onchange="calculateGrade(this)"></td>
+            <td><input type="number" class="attendance" placeholder="Chuyên cần" onchange="calculateGrade(this)"></td>
+            <td><input type="number" class="midterm" placeholder="Thi giữa kỳ" onchange="calculateGrade(this)"></td>
+            <td><input type="number" class="final" placeholder="Thi cuối kỳ" onchange="calculateGrade(this)"></td>
+            <td><input type="text" class="weight" placeholder="Tỉ lệ (vd: 30%: 20%: 50%)" onchange="calculateGrade(this)"></td>
+            <td class="avg-10"></td>
+            <td class="avg-4"></td>
+            <td class="grade"></td>
+        `;
+        document.getElementById('subjectTable').appendChild(newRow);
+    }
+
+    function calculateOverallAverage() {
+        const rows = document.querySelectorAll('#subjectTable tr');
+        let totalCredits = 0;
+        let totalWeightedScore10 = 0;
+        let totalWeightedScore4 = 0;
+
+        rows.forEach(row => {
             const credits = parseFloat(row.querySelector('.credits').value) || 0;
+            const avg10 = parseFloat(row.querySelector('.avg-10').textContent) || 0;
+            const avg4 = parseFloat(row.querySelector('.avg-4').textContent) || 0;
 
-            // Lấy tỷ lệ từ ô input
-            const weightInput = row.querySelector('.weight').value;
-            const weights = weightInput.split(':').map(w => parseFloat(w.trim()) / 100); // Chia tỷ lệ cho 100
+            totalCredits += credits;
+            totalWeightedScore10 += avg10 * credits;
+            totalWeightedScore4 += avg4 * credits;
+        });
 
-            // Tính điểm trung bình hệ 10
-            const average10 = (attendance * (weights[0] || 0) + midterm * (weights[1] || 0) + final * (weights[2] || 0)).toFixed(2);
-            row.querySelector('.avg-10').textContent = average10;
+        const overallAvg10 = (totalWeightedScore10 / totalCredits).toFixed(2) || 0;
+        const overallAvg4 = (totalWeightedScore4 / totalCredits).toFixed(2) || 0;
 
-            // Tính toán điểm trung bình hệ 4
-            const average4 = (average10 / 10 * 4).toFixed(2);
-            row.querySelector('.avg-4').textContent = average4;
-
-            // Tính điểm chữ
-            let grade;
-    if (average10 >= 9 && average10 <= 10) grade = 'A+';
-    else if (average10 >= 8.5 && average10 < 9) grade = 'A';
-    else if (average10 >= 8 && average10 < 8.5) grade = 'B+';
-    else if (average10 >= 7 && average10 < 8) grade = 'B';
-    else if (average10 >= 6.5 && average10 < 7) grade = 'C+';
-    else if (average10 >= 5.5 && average10 < 6.5) grade = 'C';
-    else if (average10 >= 5 && average10 < 5.5) grade = 'D+';
-    else if (average10 >= 4 && average10 < 5) grade = 'D';
-    else grade = 'F';
-    row.querySelector('.grade').textContent = grade;
-
-            calculateOverallAverage();
-        }
-
-        function addSubject() {
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td><input type="text" class="subject-name" placeholder="Tên môn"></td>
-                <td><input type="number" class="credits" placeholder="Số tín" onchange="calculateGrade(this)"></td>
-                <td><input type="number" class="attendance" placeholder="Chuyên cần" onchange="calculateGrade(this)"></td>
-                <td><input type="number" class="midterm" placeholder="Thi giữa kỳ" onchange="calculateGrade(this)"></td>
-                <td><input type="number" class="final" placeholder="Thi cuối kỳ" onchange="calculateGrade(this)"></td>
-                <td><input type="text" class="weight" placeholder="Tỉ lệ (vd: 30%: 20%: 50%)" onchange="calculateGrade(this)"></td>
-                <td class="avg-10"></td>
-                <td class="avg-4"></td>
-                <td class="grade"></td>
-            `;
-            document.getElementById('subjectTable').appendChild(newRow);
-        }
-
-        function calculateOverallAverage() {
-            const rows = document.querySelectorAll('#subjectTable tr');
-            let totalCredits = 0;
-            let totalWeightedScore10 = 0;
-            let totalWeightedScore4 = 0;
-
-            rows.forEach(row => {
-                const credits = parseFloat(row.querySelector('.credits').value) || 0;
-                const avg10 = parseFloat(row.querySelector('.avg-10').textContent) || 0;
-                const avg4 = parseFloat(row.querySelector('.avg-4').textContent) || 0;
-
-                totalCredits += credits;
-                totalWeightedScore10 += avg10 * credits;
-                totalWeightedScore4 += avg4 * credits;
-            });
-
-            const overallAvg10 = (totalWeightedScore10 / totalCredits).toFixed(2) || 0;
-            const overallAvg4 = (totalWeightedScore4 / totalCredits).toFixed(2) || 0;
-
-            document.getElementById('overallAvg10').innerHTML = `Trung Bình Tất Cả (Hệ 10): <strong>${overallAvg10}</strong>`;
-            document.getElementById('overallAvg4').innerHTML = `Trung Bình Tất Cả (Hệ 4): <strong>${overallAvg4}</strong>`;
-        }
-    </script>
+        document.getElementById('overallAvg10').innerHTML = `Trung Bình Tất Cả (Hệ 10): <strong>${overallAvg10}</strong>`;
+        document.getElementById('overallAvg4').innerHTML = `Trung Bình Tất Cả (Hệ 4): <strong>${overallAvg4}</strong>`;
+    }
+</script>
 
 </body>
 </html>
