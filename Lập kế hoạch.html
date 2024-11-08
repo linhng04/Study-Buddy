@@ -155,47 +155,44 @@
             border: 1px solid #ddd; /* Đường kẻ cho tiêu đề */
         }
 
-        .week-calendar .header:hover {
+        .header:hover {
             font-size: 16px; 
             font-weight: bold; 
         }
 
-        .week-calendar .time-slot {
-            height: 40px;
+        .time-slot {
+            height: 60px;
             border-bottom: 1px solid #ddd;
             padding: 5px;
             text-align: right;
             padding-right: 10px;
             background-color: #f0f8ff;
             box-sizing: border-box; /* Đảm bảo padding không làm tăng chiều cao */
-            min-height: 40px; /* Đảm bảo chiều cao tối thiểu */
             border: 1px solid #ddd; /* Đường kẻ cho ô thời gian */
         }
 
-        .week-calendar .day-slot {
+        .day-slot {
             border-left: 1px solid #ddd;
             cursor: pointer;
             background-color: white;
-            transition: background-color 0.3s;
-            display: flex;
-            flex-direction: column;
+            position: relative;
+            min-height: 60px; /* Chiều cao mỗi ô ngày là 60px */
             justify-content: center;
-            align-items: center; 
+            align-items: center;; 
             box-sizing: border-box; 
-            min-height: 40px; 
-            border: 1px solid #ddd; /* Đường kẻ cho ô ngày */
         }
 
-        .week-calendar .event {
+        .event {
             background-color: #4caf50;
             color: white;
-            padding: 5px;
-            margin-top: 5px;
+            padding: 2px;
+            margin-top: 2px;
             border-radius: 3px;
             font-size: 12px;
             position: absolute;
-            width: 90%;
+            width: calc(100% - 10px);
             text-align: center;
+            z-index: 10;
         }
 
         .overlay {
@@ -271,6 +268,7 @@
         let currentMonth = new Date().getMonth();
         const today = new Date();
         let events = [];
+        let selectedDate; // Biến để lưu trữ ngày được chọn
 
         function createMonthCalendar() {
             const monthCalendar = document.getElementById('month-calendar');
@@ -284,7 +282,7 @@
             const monthList = document.createElement('div');
             monthList.className = 'month-list';
             const months = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"];
+            "July", "August", "September", "October", "November", "December"];
             months.forEach((m, index) => {
                 const monthItem = document.createElement('div');
                 monthItem.textContent = m;
@@ -346,7 +344,7 @@
 
         function getMonthName(monthIndex) {
             const months = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"];
+            "July", "August", "September", "October", "November", "December"];
             return months[monthIndex];
         }
 
@@ -382,9 +380,10 @@
                     headerEl.style.color = 'blue'; 
                 }
 
-                // Hiển thị popup khi nhấn vào header của các ngày
                 headerEl.onclick = () => {
-                    showEventPopup(currentMonth, currentYear, startDate.getDate() + index);
+                    selectedDate = new Date(startDate);
+                    selectedDate.setDate(selectedDate.getDate() + index); // Lưu trữ ngày được chọn
+                    showEventPopup(selectedDate);
                 };
 
                 calendar.appendChild(headerEl);
@@ -397,37 +396,20 @@
                 headerEl.appendChild(dateEl);
             });
 
-            hours.forEach(hour => {
+            for (let hour = 0; hour < 24; hour++) {
                 const hourRow = document.createElement('div');
                 hourRow.className = 'time-slot';
-                hourRow.textContent = hour;
+                hourRow.textContent = `${hour.toString().padStart(2, '0')}:00`;
                 calendar.appendChild(hourRow);
 
-                for (let i = 0; i < 7; i++) {
+                days.forEach(() => {
                     const daySlot = document.createElement('div');
                     daySlot.className = 'day-slot';
-                    daySlot.onclick = () => {}; // Không cho phép nhấn vào các ô khác
                     calendar.appendChild(daySlot);
-                }
-            });
+                });
+            }
 
-            events.forEach(event => {
-                const eventDate = new Date(event.date);
-                const dayIndex = eventDate.getDay() - 1;
-
-                if (dayIndex >= 0 && dayIndex < 7) {
-                    const startHour = parseInt(event.start.split(':')[0]);
-                    const endHour = parseInt(event.end.split(':')[0]);
-                    const daySlots = calendar.getElementsByClassName('day-slot');
-
-                    for (let hour = startHour; hour < endHour; hour++) {
-                        const eventEl = document.createElement('div');
-                        eventEl.className = 'event';
-                        eventEl.textContent = `${event.name} (${event.start} - ${event.end})`;
-                        daySlots[dayIndex * 24 + hour].appendChild(eventEl);
-                    }
-                }
-            });
+            renderEvents(startDate);
         }
 
         function selectDate(day, dayDiv) {
@@ -442,41 +424,65 @@
             createWeekCalendar(startDate, date.getDay() === 0 ? 7 : date.getDay());
         }
 
-        function showEventPopup(month, year, day) {
-            const eventPopup = document.getElementById('event-popup');
-            eventPopup.style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('event-date').value = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        function renderEvents(startDate) {
+            const daySlots = document.getElementsByClassName('day-slot');
+
+            events.forEach(event => {
+                const eventDate = new Date(event.date);
+                const dayIndex = (eventDate - startDate) / (1000 * 60 * 60 * 24);
+
+                if (dayIndex >= 0 && dayIndex < 7) {
+                    const startHour = parseInt(event.start.split(':')[0]);
+                    const startMinutes = parseInt(event.start.split(':')[1]);
+                    const endHour = parseInt(event.end.split(':')[0]);
+                    const endMinutes = parseInt(event.end.split(':')[1]);
+
+                    const eventEl = document.createElement('div');
+                    eventEl.className = 'event';
+                    eventEl.textContent = `${event.name} (${event.start} - ${event.end})`;
+
+                    const position = dayIndex * 24 + startHour; 
+                    const height = ((endHour * 60 + endMinutes) - (startHour * 60 + startMinutes)); 
+
+                    eventEl.style.top = `${(startHour * 60 + startMinutes)}px`;
+                    eventEl.style.height = `${height}px`;
+                    daySlots[position].appendChild(eventEl);
+                }
+            });
+        }
+
+        function showEventPopup(selectedDate) {
+            const overlay = document.getElementById('overlay');
+            const popup = document.getElementById('event-popup');
+            overlay.style.display = 'block';
+            popup.style.display = 'block';
+
+            document.getElementById('event-date').value = selectedDate.toISOString().substring(0, 10);
+            document.getElementById('event-start').value = "08:00"; // Giá trị mặc định
+            document.getElementById('event-end').value = "09:00"; // Giá trị mặc định
         }
 
         function closeEventPopup() {
-            const eventPopup = document.getElementById('event-popup');
-            eventPopup.style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-            document.getElementById('event-name').value = '';
-            document.getElementById('event-date').value = '';
-            document.getElementById('event-start').value = '';
-            document.getElementById('event-end').value = '';
-            document.getElementById('event-notes').value = '';
+            const overlay = document.getElementById('overlay');
+            const popup = document.getElementById('event-popup');
+            overlay.style.display = 'none';
+            popup.style.display = 'none';
         }
 
         function addNewEvent(event) {
-            event.stopPropagation();
+            event.preventDefault();
             const name = document.getElementById('event-name').value;
             const date = document.getElementById('event-date').value;
             const start = document.getElementById('event-start').value;
             const end = document.getElementById('event-end').value;
-            const notes = document.getElementById('event-notes').value;
 
-            if (name && date && start) {
-                events.push({ name, date, start, end, notes });
-                createWeekCalendar(new Date(date), new Date(date).getDay() === 0 ? 7 : new Date(date).getDay());
-            }
+            events.push({ name, date, start, end });
             closeEventPopup();
+            createWeekCalendar(new Date(date));
         }
 
         createMonthCalendar();
-        createWeekCalendar(today, today.getDay() === 0 ? 7 : today.getDay());
+        createWeekCalendar(today);
     </script>
 </body>
 </html>
