@@ -1,5 +1,5 @@
 const usersDb = JSON.parse(localStorage.getItem('usersDb')) || {}; 
-let isLoggedIn = false; 
+let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; // Kiểm tra trạng thái đăng nhập từ localStorage
 
 function login() {
     const username = document.getElementById('username').value;
@@ -7,10 +7,15 @@ function login() {
 
     if (usersDb[username] && usersDb[username] === password) {
         isLoggedIn = true;
+        localStorage.setItem('isLoggedIn', 'true'); // Lưu trạng thái đăng nhập
+
+        // Ẩn form đăng nhập và hiển thị dashboard
         document.getElementById('login-form').classList.add('hidden');
         document.getElementById('dashboard').classList.remove('hidden');
+        document.getElementById('logout-btn').classList.remove('hidden'); // Hiển thị nút đăng xuất
+
         displayEvents();
-        document.getElementById('message').classList.add('hidden'); 
+        document.getElementById('message').classList.add('hidden');
     } else {
         alert("Tài khoản hoặc mật khẩu không đúng!");
     }
@@ -64,9 +69,12 @@ function toggleForgotPassword() {
 }
 
 function resetPassword() {
-    const username = document.getElementById('forgot-username').value;
+    const username = document.getElementById('forgot-username').value; // Lấy tài khoản từ input (email/số điện thoại)
+    
+    // Kiểm tra xem tài khoản có tồn tại trong usersDb không
     if (usersDb[username]) {
-        alert("Đã gửi yêu cầu đặt lại mật khẩu đến " + username);
+        // Hiển thị mật khẩu
+        alert("Mật khẩu của bạn là: " + usersDb[username]);
     } else {
         alert("Tài khoản không tồn tại.");
     }
@@ -83,66 +91,24 @@ function displayEvents() {
     });
 }
 
-function addEvent() {
-    const eventInput = document.getElementById('event-input');
-    const eventValue = eventInput.value.trim();
-    if (eventValue) {
-        const eventList = document.getElementById('event-list');
-        const li = document.createElement('li');
-        li.textContent = eventValue;
-        eventList.appendChild(li);
-        
-        const events = JSON.parse(localStorage.getItem('events')) || [];
-        events.push(eventValue);
-        localStorage.setItem('events', JSON.stringify(events));
-        
-        eventInput.value = ''; // Xóa input sau khi thêm
-    } else {
-        alert("Vui lòng nhập sự kiện.");
-    }
+// Đăng xuất: Xóa trạng thái đăng nhập và quay lại màn hình đăng nhập
+function logout() {
+    isLoggedIn = false;
+    localStorage.removeItem('isLoggedIn'); // Xóa trạng thái đăng nhập khỏi localStorage
+
+    // Ẩn dashboard và hiển thị lại form đăng nhập
+    document.getElementById('login-form').classList.remove('hidden');
+    document.getElementById('dashboard').classList.add('hidden');
+    document.getElementById('logout-btn').classList.add('hidden'); // Ẩn nút đăng xuất
 }
 
-function calculateGPA() {
-    const gpaInput = document.getElementById('gpa-input').value;
-    const grades = gpaInput.split(',').map(Number);
-    const validGrades = grades.filter(grade => !isNaN(grade));
-
-    if (validGrades.length > 0) {
-        const sum = validGrades.reduce((a, b) => a + b, 0);
-        const gpa = (sum / validGrades.length).toFixed(2);
-        document.getElementById('gpa-result').textContent = `GPA của bạn là: ${gpa}`;
-    } else {
-        alert("Vui lòng nhập điểm hợp lệ.");
-    }
-}
-
-// Kiểm tra trạng thái đăng nhập khi tải trang
+// Kiểm tra trạng thái đăng nhập khi tải lại trang
 document.addEventListener("DOMContentLoaded", () => {
     if (isLoggedIn) {
+        // Nếu người dùng đã đăng nhập, ẩn form đăng nhập và hiển thị dashboard
         document.getElementById('login-form').classList.add('hidden');
         document.getElementById('dashboard').classList.remove('hidden');
+        document.getElementById('logout-btn').classList.remove('hidden'); // Hiển thị nút đăng xuất
         displayEvents();
     }
-});
-
-// Thêm phần hiển thị thông báo cần đăng nhập
-function showMessage() {
-    const messageDiv = document.getElementById('message');
-    messageDiv.innerHTML = 'Bạn cần phải đăng nhập để truy cập vào trang này.';
-    messageDiv.classList.remove('hidden'); // Hiện thông báo
-}
-
-// Thêm phần kiểm tra khi nhấp vào liên kết trên thanh tiêu đề
-const navLinks = document.querySelectorAll('.nav-link'); 
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault(); // Ngăn chặn hành vi mặc định
-
-        if (!isLoggedIn) {
-            showMessage(); // Hiển thị thông báo cần đăng nhập
-        } else {
-            // Chuyển đến trang tương ứng (hoặc thực hiện hành động nào đó)
-            alert("Chuyển đến trang tương ứng...");
-        }
-    });
 });

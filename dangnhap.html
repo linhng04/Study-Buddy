@@ -10,17 +10,7 @@
 </head>
 <body>
 
-    <header class="navbar">
-        <img src="/Study-Buddy/images/logo2.png" alt="Logo" class="logo"> 
-        <nav>
-            <a class="nav-link" href="#home">Trang chủ</a>
-            <a class="nav-link" href="#schedule">Thời gian biểu</a>
-            <a class="nav-link" href="#plan">Lập kế hoạch học tập</a>
-            <a class="nav-link" href="#gpa">GPA</a>
-            <a class="nav-link" href="#notifications">Thông báo</a>
-        </nav>        
-    </header>
-
+    <!-- Đăng nhập form -->
     <div class="container" id="login-form">
         <h1>Đăng nhập</h1>
         <input type="text" id="username" placeholder="Tài khoản" required>
@@ -30,6 +20,7 @@
         <p><span onclick="showForgotPassword()">Quên mật khẩu?</span></p>
     </div>
 
+    <!-- Đăng ký form -->
     <div class="container hidden" id="register-form">
         <h1>Đăng ký</h1>
         <input type="text" id="new-username" placeholder="Tài khoản" required>
@@ -38,6 +29,7 @@
         <p>Đã có tài khoản? <span onclick="toggleForms()">Đăng nhập</span></p>
     </div>
 
+    <!-- Quên mật khẩu form -->
     <div class="container hidden" id="forgot-password-form">
         <h1>Quên mật khẩu</h1>
         <input type="text" id="forgot-username" placeholder="Email/Số điện thoại" required>
@@ -45,28 +37,37 @@
         <p><span onclick="toggleForgotPassword()">Quay lại đăng nhập</span></p>
     </div>
 
+    <!-- Dashboard -->
+     
     <div id="dashboard" class="hidden">
-        <h2>Bảng điều khiển</h2>
 
-        <div id="schedule-container" class="box">
-            <h3>Thời gian biểu của bạn:</h3>
-            <ul id="event-list"></ul>
+        <div class="content">
+            <div class="intro-box">
+                <strong>Study Buddy là một giải pháp toàn diện được thiết kế nhằm hỗ trợ học sinh, sinh viên quản lý hành trình học tập của mình một cách hiệu quả. Bằng cách tích hợp các tính năng lập kế hoạch học tập, quản lý thời gian, tính điểm trung bình (GPA) và cảnh báo thông báo thông minh, nhằm giúp người dùng tối ưu hóa quá trình học tập và đạt được thành tích học tập tốt nhất.</strong>
+            </div>
+        </div>        
+        
+        <div class="container2">    
+            <button>
+                <div class="section">
+                    <a href="GPA.html"><img src="/Study-Buddy/images/gpa.png" alt="GPA"></a>
+                    <h2>GPA</h2>
+                </div>
+            </button>
+            
+            <button>
+                <div class="section">
+                    <a href="Lập kế hoạch.html"><img src="/Study-Buddy/images/khht.png" alt="Kế Hoạch Học Tập"></a>
+                    <h2>KẾ HOẠCH HỌC TẬP</h2>
+                </div>
+            </button>
         </div>
 
-        <div id="add-event-container" class="box">
-            <h3>Thêm sự kiện</h3>
-            <input type="text" id="event-input" placeholder="Nhập sự kiện mới" required>
-            <button onclick="addEvent()">Thêm sự kiện</button>
-        </div>
-
-        <div id="gpa-container" class="box">
-            <h3>Nhập điểm và tính GPA</h3>
-            <input type="text" id="gpa-input" placeholder="Điểm số (cách nhau bằng dấu phẩy)" required>
-            <button onclick="calculateGPA()">Tính GPA</button>
-            <p id="gpa-result"></p>
-        </div>
+        <!-- Nút đăng xuất -->
+        <button id="logout-btn" onclick="logout()" class="logout-btn hidden">Đăng xuất</button>
     </div>
 
+    <!-- Thông báo lỗi -->
     <div id="message" class="hidden"></div>
 
 </body>

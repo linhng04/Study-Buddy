@@ -11,43 +11,21 @@ body {
     align-items: center; 
     justify-content: center; 
     font-size: 1.5em; 
+    position: relative; /* Để có thể thêm lớp phủ */
 }
 
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgb(190, 188, 188);
-    padding: 20px 40px; 
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+/* Lớp phủ cho hình nền */
+body::before {
+    content: ''; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background-color: rgba(255, 255, 255, 0.126); /* Lớp phủ mờ, có thể thay đổi màu và độ mờ */
+    z-index: -1; /* Đảm bảo lớp phủ nằm dưới nội dung */
 }
 
-.logo {
-    height: 100px; 
-    margin-right: 20px;
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1; 
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    margin: 0 30px; 
-    font-size: 1.2em; 
-}
-
-nav a:hover {
-    color: #4CAF50;
-}
 
 .container {
     background-color: rgba(255, 255, 255, 0.9);
@@ -55,7 +33,7 @@ nav a:hover {
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     width: 400px; 
-    text-align: center;
+    text-align: center; 
 }
 
 .box {
@@ -64,6 +42,87 @@ nav a:hover {
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     margin: 20px 0;
+}
+
+/* Thiết kế cho ô giới thiệu */
+.intro-box {
+    background-color: rgba(255, 255, 255, 0.928); /* Nền trắng mờ */
+    padding: 80px; /* Khoảng cách bên trong */
+    border-radius: 15px; /* Bo góc */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Bóng đổ nhẹ để nổi bật */
+    font-size: 1.2em; /* Kích thước chữ lớn hơn */
+    color: #333; /* Màu chữ đậm để dễ đọc */
+    text-align: center; /* Căn giữa chữ */
+    max-width: 100%; /* Giới hạn độ rộng */
+    margin: 100px auto; /* Căn giữa và có khoảng cách trên và dưới */
+}
+
+/* Nếu muốn chữ có hiệu ứng nhấp nháy */
+.intro-box strong {
+    animation: blink 2s linear infinite; /* Hiệu ứng nhấp nháy */
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.container2 {
+    display: flex;                  /* Sử dụng Flexbox */
+    justify-content: center;        /* Căn giữa theo chiều ngang */
+    align-items: center;            /* Căn giữa theo chiều dọc */
+    gap: 100px;                       /* Giảm khoảng cách giữa các phần tử (Giảm gap) */
+    padding: 20px;                  /* Khoảng cách giữa container và các phần tử con */
+    width: 100%;                    /* Đảm bảo container chiếm toàn bộ chiều rộng */
+    max-width: 800px;               /* Giới hạn độ rộng tối đa */
+    margin: 0 auto;                 /* Căn giữa container trong màn hình */
+}
+
+.container2 button { /* Định kiểu cho các nút trong container */
+    border: none; /* Loại bỏ viền của nút */
+    padding: 0; /* Loại bỏ padding của nút */
+}
+
+.container2 .section {
+    width: 300px; /* Đặt chiều rộng cố định cho mỗi section */
+    height: 300px; /* Đặt chiều cao cố định cho mỗi section */
+    display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
+    flex-direction: column; /* Sắp xếp nội dung theo cột */
+    align-items: center; /* Căn giữa nội dung theo chiều ngang */
+    justify-content: center; /* Căn giữa nội dung theo chiều dọc */
+    text-align: center; /* Căn giữa văn bản */
+    background-color: rgba(180, 88, 169, 0.125); /* Màu nền cho mỗi section */
+    border-radius: 10px; /* Làm tròn các góc */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển đổi kích thước khi di chuột qua */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px;
+    font-size: 40px;   
+}
+
+.container2 .section:hover {
+    transform: scale(1.05); 
+}
+
+.container2 .section img {
+    width: 280px;
+    height: 250px; 
+    border-radius: 10px; 
+    max-width: 1000px; /* Đặt chiều rộng tối đa của div là 200px */
+    max-height: 1000px; /* Đặt chiều cao tối đa của div là 200px */
+    overflow: hidden;
+}
+
+.container2 .section h2 {
+    margin-top: 10px; 
+    font-size: 18px; 
+}
+
+.logo img {
+    width: auto;
+    height: auto;
 }
 
 h1 {
@@ -93,7 +152,6 @@ button {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 95%;
     font-size: 1.1em; 
 }
 
@@ -130,3 +188,32 @@ span {
     margin: 20px;
     text-align: center;
 }
+
+/* Nút Đăng xuất nhỏ xinh ở góc phải cuối màn hình */
+.logout-btn {
+    position: fixed;  /* Vị trí cố định */
+    bottom: 20px;     /* Cách đáy màn hình 20px */
+    right: 20px;      /* Cách phải màn hình 20px */
+    width: 150px;      /* Chiều rộng của nút (tương đương 1 ô vuông nhỏ) */
+    height: 60px;     /* Chiều cao của nút (tương đương 1 ô vuông nhỏ) */
+    background-color: #d71818;  /* Màu nền đỏ */
+    color: white;     /* Màu chữ trắng */
+    border: none;     /* Không border */
+    border-radius: 5px;  /* Bo góc nhẹ cho nút */
+    font-size: 1em;    /* Cỡ chữ vừa phải */
+    display: flex;     /* Dùng flex để căn giữa icon */
+    justify-content: center;  /* Căn giữa nội dung ngang */
+    align-items: center;     /* Căn giữa nội dung dọc */
+    cursor: pointer;  /* Đổi con trỏ thành tay khi hover */
+    transition: background-color 0.3s ease;
+    z-index: 1000;    /* Đảm bảo nút xuất hiện trên tất cả các phần tử khác */
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;  /* Màu nền đổi khi hover */
+}
+
+.logout-btn.hidden {
+    display: none;  /* Ẩn nút khi không cần thiết */
+}
+
