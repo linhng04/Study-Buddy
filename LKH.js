@@ -2,6 +2,7 @@ let currentYear = new Date().getFullYear();
 let currentMonth = new Date().getMonth();
 const today = new Date();
 let events = [];
+let editingEvent = null;
 let selectedDayInMonth = null;
 
 function createMonthCalendar() {
@@ -231,7 +232,7 @@ function renderEvents(startDate) {
   // Tính offsetDays để có được vị trí đầu tuần (Thứ Hai)
   const offsetDays = (dayOfWeek >= startOfWeek ? dayOfWeek - startOfWeek : dayOfWeek - startOfWeek - 7);
   console.log(events, 'events');
-  
+
   events.forEach((event) => {
     const eventDate = new Date(event.date);
     console.log(eventDate, 'eventDate');
@@ -243,19 +244,26 @@ function renderEvents(startDate) {
       const startMinutes = parseInt(event.start.split(":")[1]);
       const endHour = parseInt(event.end.split(":")[0]);
       const endMinutes = parseInt(event.end.split(":")[1]);
-
+      const statusText = event.completed ? "Đã hoàn thành" : "Chưa hoàn thành";
       const eventEl = document.createElement("div");
       eventEl.className = "event";
-      eventEl.textContent = `${event.name} (${event.start} - ${event.end})`;
+      eventEl.textContent = `${event.name}\n(${event.start} - ${event.end})\n${statusText}`;
+      eventEl.style.whiteSpace = "pre-wrap";
 
       // Tính vị trí cột và hàng dựa trên dayIndex và thời gian bắt đầu
       const position = dayIndex + startHour * 7; // Sử dụng dayIndex để đảm bảo đúng cột
-       // Tính toán thời gian bắt đầu và chiều cao của sự kiện
-       const height = ((endHour * 60 + endMinutes) - (startHour * 60 + startMinutes)); 
+      // Tính toán thời gian bắt đầu và chiều cao của sự kiện
+      const height = ((endHour * 60 + endMinutes) - (startHour * 60 + startMinutes));
 
-       eventEl.style.top = `${ startMinutes}px`;
-       eventEl.style.height = `${height}px`;
-         
+      eventEl.style.top = `${startMinutes}px`;
+      eventEl.style.height = `${height}px`;
+      eventEl.style.backgroundColor = event.color === "blue" ? "#66B2FF" : "#D1A6E0";
+      eventEl.style.color = event.completed ? "white" : "black";
+      if (!event.completed) {
+        eventEl.onclick = () => showEditEventPopup(event);
+      } else {
+        eventEl.style.cursor = "not-allowed"; // Thêm con trỏ không cho phép chỉnh sửa
+      }
       daySlots[position].appendChild(eventEl);
     }
   });
@@ -286,31 +294,78 @@ function closeEventPopup() {
   const popup = document.getElementById("event-popup");
   overlay.style.display = "none";
   popup.style.display = "none";
+  // Xóa trạng thái chỉnh sửa sau khi đóng popup
+  editingEvent = null;
 }
-
+//thêm mới ghi chú
 function addNewEvent(event) {
   event.preventDefault();
   const name = document.getElementById("event-name").value;
   const date = document.getElementById("event-date").value;
   const start = document.getElementById("event-start").value;
   const end = document.getElementById("event-end").value;
+  const completed = document.getElementById("completed").checked;
+  const color = document.querySelector('input[name="color"]:checked').value;
   // Kiểm tra nếu khoảng thời gian này đã có ghi chú chưa
-  const isOverlap = events.some(e => e.date === date &&
-    ((start >= e.start && start < e.end) || (end > e.start && end <= e.end) ||
-      (start <= e.start && end >= e.end)));
+  console.log(editingEvent, 'editingEvent');
 
-  if (isOverlap) {
-    alert("Khoảng thời gian này đã có ghi chú. Vui lòng chọn thời gian khác.");
-    return;
+
+  if (editingEvent) {
+    // Nếu đang chỉnh sửa, cập nhật các thuộc tính của sự kiện hiện tại
+    editingEvent.name = name;
+    editingEvent.date = date;
+    editingEvent.start = start;
+    editingEvent.end = end;
+    editingEvent.completed = completed;
+    editingEvent.color = color;
+    const isOverlap = events.some(e => {
+      return e !== editingEvent && e.date === date &&
+        ((start >= e.start && start < e.end) || (end > e.start && end <= e.end) ||
+          (start <= e.start && end >= e.end));
+    });
+
+    if (isOverlap) {
+      alert("Khoảng thời gian này đã có ghi chú. Vui lòng chọn thời gian khác.");
+      return;
+    }
+    editingEvent = null; // Xóa trạng thái chỉnh sửa sau khi lưu
+  } else {
+    // Nếu là sự kiện mới, thêm vào danh sách
+    const isOverlap = events.some(e => {
+      return e.date === date &&
+        ((start >= e.start && start < e.end) || (end > e.start && end <= e.end) ||
+          (start <= e.start && end >= e.end));
+    });
+
+    if (isOverlap) {
+      alert("Khoảng thời gian này đã có ghi chú. Vui lòng chọn thời gian khác.");
+      return;
+    }
+    events.push({ name, date, start, end, completed, color });
   }
-  console.log(date, 'date');
 
-  events.push({ name, date, start, end });
+  // events.push({ name, date, start, end, completed, color });
   closeEventPopup();
   createWeekCalendar(new Date(date));
 
 }
+//sửa ghi chú
+function showEditEventPopup(event) {
+  const overlay = document.getElementById("overlay");
+  const popup = document.getElementById("event-popup");
+  overlay.style.display = "block";
+  popup.style.display = "block";
+  document.getElementById("event-popup-title").textContent = "Sửa sự kiện";
+  document.getElementById("event-name").value = event.name;
+  document.getElementById("event-date").value = event.date;
+  document.getElementById("event-start").value = event.start;
+  document.getElementById("event-end").value = event.end;
+  document.getElementById("completed").checked = event.completed;
+  document.querySelector(`input[name="color"][value="${event.color}"]`).checked = true;
+  console.log(event, 'event');
 
+  editingEvent = event;
+}
 window.onload = () => {
   createMonthCalendar();
   createWeekCalendar(today);
