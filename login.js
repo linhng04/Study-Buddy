@@ -1,5 +1,5 @@
 const usersDb = JSON.parse(localStorage.getItem('usersDb')) || {}; 
-let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; // Kiểm tra trạng thái đăng nhập từ localStorage
+let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; 
 
 function login() {
     const username = document.getElementById('username').value;
@@ -7,12 +7,11 @@ function login() {
 
     if (usersDb[username] && usersDb[username] === password) {
         isLoggedIn = true;
-        localStorage.setItem('isLoggedIn', 'true'); // Lưu trạng thái đăng nhập
+        localStorage.setItem('isLoggedIn', 'true'); 
 
-        // Ẩn form đăng nhập và hiển thị dashboard
         document.getElementById('login-form').classList.add('hidden');
         document.getElementById('dashboard').classList.remove('hidden');
-        document.getElementById('logout-btn').classList.remove('hidden'); // Hiển thị nút đăng xuất
+        document.getElementById('logout-btn').classList.remove('hidden'); 
 
         displayEvents();
         document.getElementById('message').classList.add('hidden');
@@ -25,7 +24,7 @@ function register() {
     const newUsername = document.getElementById('new-username').value;
     const newPassword = document.getElementById('new-password').value;
 
-    const emailOrPhonePattern = /^(?:\w+@\w+\.\w+|\d{10,11})$/; // Email hoặc số điện thoại
+    const emailOrPhonePattern = /^(?:\w+@\w+\.\w+|\d{10,11})$/;
     if (newUsername && newPassword) {
         if (emailOrPhonePattern.test(newUsername)) { 
             if (newPassword.length >= 8) {
@@ -69,11 +68,9 @@ function toggleForgotPassword() {
 }
 
 function resetPassword() {
-    const username = document.getElementById('forgot-username').value; // Lấy tài khoản từ input (email/số điện thoại)
-    
-    // Kiểm tra xem tài khoản có tồn tại trong usersDb không
+    const username = document.getElementById('forgot-username').value; 
+
     if (usersDb[username]) {
-        // Hiển thị mật khẩu
         alert("Mật khẩu của bạn là: " + usersDb[username]);
     } else {
         alert("Tài khoản không tồn tại.");
@@ -91,24 +88,20 @@ function displayEvents() {
     });
 }
 
-// Đăng xuất: Xóa trạng thái đăng nhập và quay lại màn hình đăng nhập
 function logout() {
     isLoggedIn = false;
-    localStorage.removeItem('isLoggedIn'); // Xóa trạng thái đăng nhập khỏi localStorage
+    localStorage.removeItem('isLoggedIn'); 
 
-    // Ẩn dashboard và hiển thị lại form đăng nhập
     document.getElementById('login-form').classList.remove('hidden');
     document.getElementById('dashboard').classList.add('hidden');
-    document.getElementById('logout-btn').classList.add('hidden'); // Ẩn nút đăng xuất
+    document.getElementById('logout-btn').classList.add('hidden'); 
 }
 
-// Kiểm tra trạng thái đăng nhập khi tải lại trang
 document.addEventListener("DOMContentLoaded", () => {
     if (isLoggedIn) {
-        // Nếu người dùng đã đăng nhập, ẩn form đăng nhập và hiển thị dashboard
         document.getElementById('login-form').classList.add('hidden');
         document.getElementById('dashboard').classList.remove('hidden');
-        document.getElementById('logout-btn').classList.remove('hidden'); // Hiển thị nút đăng xuất
+        document.getElementById('logout-btn').classList.remove('hidden');
         displayEvents();
     }
 });
