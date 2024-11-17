@@ -1,0 +1,153 @@
+body {
+    background-color:rgb(255, 255, 255);
+    background: url('/static/image/bg5.avif') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+  }
+  .column {
+    flex-basis: 30%;
+    margin-right: 10px; /* Khoảng cách giữa các cột */
+  }
+  .column.right {
+    flex-basis: 60%;
+    margin-left: 30px; /* Đẩy cột bên phải sang trái */
+  }
+  .info-box {
+    background-color: rgb(196, 47, 196);
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  /* .info-box:hover {
+    transform: translateY(-5px);
+  } */
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .row label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  .row input {
+    width: 50px; 
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .table th, .table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center; 
+    background-color: plum;
+  }
+  .table th {
+    background-color: rgb(143, 2, 143);
+  }
+  .table input {
+    width: 100%; /* Chiều rộng ô nhập liệu trong bảng */
+    /* border: none; */
+    text-align: center; /* Căn giữa văn bản trong ô nhập liệu */
+   
+  }
+  .table td:nth-child(1) {
+    width: 30px; /* Ô "STT" */
+  }
+
+  .table td:nth-child(2) {
+    display: flex;
+    justify-content: center; /* Căn giữa cột "Môn học" */
+  }
+  /* .table td:nth-child(2) input {
+    width: 250%;
+  } */
+  .table td:nth-child(3) {
+    width: 60px; /* Ô "Số tín chỉ" mở rộng thêm */
+  }
+  .table td:nth-child(3) input {
+    width: 100%; /* Ô "Số tín chỉ" giữ chiều rộng */
+  }
+  .table td:nth-child(4) {
+    width: 40px; /* Ô "Điểm 10" */
+  }
+  .table td:nth-child(4) input {
+    width: 100%; /* Ô "Điểm 10" giữ chiều rộng */
+  }
+  .table td:nth-child(5) {
+    width: 40px; /* Ô "Điểm 4" */
+  }
+  .table td:nth-child(5) input {
+    width: 100%; /* Ô "Điểm 4" giữ chiều rộng */
+  }
+  .table td:nth-child(6) {
+  width: 40px; /* Ô "Chữ" */
+  }
+  .table td:nth-child(6) input {
+  width: 100%; /* Ô "Chữ" giữ chiều rộng */
+  }
+  .table td:nth-child(7) {
+  width: 50px; /* Ô "Hành động" - đã thu nhỏ */
+  }
+  .delete-row {
+    cursor: pointer;
+    color: red;
+  }
+  .add-row {
+    cursor: pointer;
+    color: white; /* Đặt màu chữ thành trắng để dễ đọc trên nền xanh */
+    margin-top: 10px;
+    background-color: rgb(113, 7, 113);
+    text-align: center; /* Căn giữa văn bản theo chiều ngang */
+    display: flex; /* Sử dụng Flexbox để căn giữa */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    height: 40px; /* Đặt chiều cao cố định cho nút */
+    border-radius: 5px; /* Bo tròn các góc */
+    padding: 0 10px; /* Khoảng cách bên trong nút */
+  }
+  /* Loại bỏ gạch chân từ các liên kết */
+  a {
+    text-decoration: none; /* Loại bỏ gạch chân */
+    color: inherit; /* Giữ màu chữ giống với màu văn bản xung quanh */
+  }
+  .back-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(154, 3, 154);
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1E90FF; /* Màu xanh biển */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.back-button:hover {
+    background-color: #1C86EE; /* Màu xanh biển đậm hơn khi hover */
+}

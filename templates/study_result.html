@@ -4,126 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kết quả học tập</title>
-  <style>
-    body {
-      background-color:cadetblue;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      display: flex;
-    }
-    .column {
-      flex-basis: 30%;
-      margin-right: 10px; /* Khoảng cách giữa các cột */
-    }
-    .column.right {
-      flex-basis: 60%;
-      margin-left: 30px; /* Đẩy cột bên phải sang trái */
-    }
-    .info-box {
-      background-color: white;
-      border-radius: 5px;
-      padding: 5px;
-      margin-top: 20px;
-      margin-bottom: 30px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-    /* .info-box:hover {
-      transform: translateY(-5px);
-    } */
-    .row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 5px;
-    }
-    .row label {
-      font-weight: bold;
-      margin-right: 5px;
-    }
-    .row input {
-      width: 50px; 
-      padding: 3px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-    }
-    .table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .table th, .table td {
-      padding: 10px;
-      border: 1px solid #ddd;
-      text-align: center; 
-    }
-    .table th {
-      background-color: #f2f2f2;
-    }
-    .table input {
-      width: 100%; /* Chiều rộng ô nhập liệu trong bảng */
-      /* border: none; */
-      text-align: center; /* Căn giữa văn bản trong ô nhập liệu */
-     
-    }
-    .table td:nth-child(1) {
-      width: 30px; /* Ô "STT" */
-    }
-
-    .table td:nth-child(2) {
-      display: flex;
-      justify-content: center; /* Căn giữa cột "Môn học" */
-    }
-    /* .table td:nth-child(2) input {
-      width: 250%;
-    } */
-    .table td:nth-child(3) {
-      width: 60px; /* Ô "Số tín chỉ" mở rộng thêm */
-    }
-    .table td:nth-child(3) input {
-      width: 100%; /* Ô "Số tín chỉ" giữ chiều rộng */
-    }
-    .table td:nth-child(4) {
-      width: 40px; /* Ô "Điểm 10" */
-    }
-    .table td:nth-child(4) input {
-      width: 100%; /* Ô "Điểm 10" giữ chiều rộng */
-    }
-    .table td:nth-child(5) {
-      width: 40px; /* Ô "Điểm 4" */
-    }
-    .table td:nth-child(5) input {
-      width: 100%; /* Ô "Điểm 4" giữ chiều rộng */
-    }
-    .table td:nth-child(6) {
-    width: 40px; /* Ô "Chữ" */
-    }
-    .table td:nth-child(6) input {
-    width: 100%; /* Ô "Chữ" giữ chiều rộng */
-    }
-    .table td:nth-child(7) {
-    width: 50px; /* Ô "Hành động" - đã thu nhỏ */
-    }
-    .delete-row {
-      cursor: pointer;
-      color: red;
-    }
-    .add-row {
-      cursor: pointer;
-      color: blue;
-      text-decoration: underline;
-      margin-top: 10px;
-    }
-    /* Loại bỏ gạch chân từ các liên kết */
-    a {
-      text-decoration: none; /* Loại bỏ gạch chân */
-      color: inherit; /* Giữ màu chữ giống với màu văn bản xung quanh */
-    }
-  </style>
+  <link rel="stylesheet" href="/static/css/study_result.css">
 </head>
 <body>
   <div class="container">
@@ -159,13 +40,13 @@
         </div>
       </div>
       <div class="info-box" style="text-align: center; padding: 20px; border: 1px solid #ccc;">
-        <a href="study_target.html">
+        <a href="/study_target">
           <h2>Mục tiêu học tập</h2>
           <p>Đặt mục tiêu cho học tập của bạn.</p>
         </a>
     </div>
       <div class="info-box" style ="text-align: center; padding: 20px; border: 1px solid #ccc;">
-        <a href="study_statistics.html">
+        <a href="/study_statistics">
           <h2>Thống kê</h2>
           <p>Xem thống kê học tập của bạn.</p>
         </a>
@@ -210,6 +91,9 @@
         </tbody>
       </table>
       <div class="add-row" onclick="addRow()">Thêm môn học</div> <!--Thêm mới-->
+    </div>
+    <div>
+        <a href="/home" class="back-button">Quay về trang chủ</a>
     </div>
   </div>
   <script>

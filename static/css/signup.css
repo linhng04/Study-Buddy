@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    background: url('/static/image/bg6.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f3f4f6;
+}
+
+.login-container {
+    position: relative;
+    z-index: 2;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: auto;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    color: #14467a;
+}
+
+input[type="text"], input[type="password"], input[type="email"], select {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: border 0.3s ease;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0c3c6e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+    background-color: #10447b;
+}
+
+.login-btn {
+    width: 100%; /* Đảm bảo nút này cũng chiếm toàn bộ chiều rộng */
+    padding: 8px; /* Giảm kích thước nút login */
+    background-color: #007BFF; /* Màu nền cho nút login */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px; /* Kích thước chữ nhỏ hơn */
+    cursor: pointer;
+    margin-top: 10px; /* Khoảng cách giữa nút đăng ký và nút login */
+}
+
+.login-btn:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+}
+
+p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 20px;
+}
+
+a {
+    color: #134171;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: opacity 1s ease-in-out;
+}
+
+@keyframes fade {
+    0% { opacity: 1; }
+    49.99% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 0; }
+}

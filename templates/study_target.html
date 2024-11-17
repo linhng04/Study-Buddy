@@ -4,73 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mục Tiêu Học Tập</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-        }
-        .info-table {
-            background-color: white;
-            margin: 20px;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            max-width: 600px;
-        }
-        .info-table h3 {
-            margin-top: 0;
-        }
-        .info-table table {
-            width: 100%;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .table-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: stretch;
-            margin: 40px auto;
-            width: 95%;
-            border: 2px dashed #4CAF50;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .small-table {
-            flex: 1;
-            margin: 0 10px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 600px) {
-            .info-table {
-                width: 100%; 
-            }
-            .table-container {
-                flex-direction: column; 
-                align-items: center; 
-            }
-            .small-table {
-                margin: 10px 0; 
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/static/css/study_target.css">
 </head>
 <body>
     <div class="header">
@@ -172,6 +106,9 @@
         <h3>Kết quả trung bình tất cả</h3>
         <p id="overallAvg10">Trung Bình Tất Cả (Hệ 10): <strong>0</strong></p>
         <p id="overallAvg4">Trung Bình Tất Cả (Hệ 4): <strong>0</strong></p>
+        <div>
+            <a href="/home" class="back-button">Quay về trang chủ</a>
+        </div>
     </div>
     
     <style>
