@@ -1,0 +1,61 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('/static/image/bg8.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Nền trắng mờ */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px; /* Giới hạn chiều rộng của khung */
+    width: 100%;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+#notices {
+    text-align: left; /* Căn lề trái cho tất cả thông báo */
+}
+
+.notice {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Căn lề trái cho nội dung thông báo */
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1E90FF; /* Màu xanh biển */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Khoảng cách phía trên nút */
+    text-align: center;
+    /* position: relative;
+    left: 50%;
+    transform: translateX(-50%); */
+}
+
+.back-button:hover {
+    background-color: #1C86EE; /* Màu xanh biển đậm hơn khi hover */
+}

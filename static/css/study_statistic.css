@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('/static/image/bg3.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    background-color: #F0F0F0;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2B2B2B;
+    color: #FFF;
+    height: 100vh;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.sidebar ul li a.active {
+    background-color: #3399FF;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.top-bar input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+}
+
+.card.blue {
+    background-color: #007BFF;
+    color: white;
+}
+
+.card.green {
+    background-color: #28A745;
+    color: white;
+}
+
+.card.gray {
+    background-color: #6C757D;
+    color: white;
+}
+
+.percentage {
+    font-size: 0.9em;
+    color: lightgreen;
+}
+
+.charts {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chart {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+    margin: 10px;
+}
+
+/* .projects {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 20px;
+} */
+
+.progress {
+    float: right;
+    color: green;
+}
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1E90FF; /* Màu xanh biển */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.back-button:hover {
+    background-color: #1C86EE; /* Màu xanh biển đậm hơn khi hover */
+}

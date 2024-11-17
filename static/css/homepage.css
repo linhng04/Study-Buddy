@@ -1,0 +1,86 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('/static/image/bg1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white; /* Đặt màu chữ thành trắng để dễ đọc trên nền tối */
+  }
+  
+  .container {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(184, 46, 34, 0.8); /* Nền trắng mờ */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px; /* Giới hạn chiều rộng của khung */
+    width: 100%;
+  }
+  
+  h1 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+  
+  p {
+    color: white;
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
+  
+  .options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Đảm bảo các mục chọn sẽ xuống dòng nếu không đủ chỗ */
+  }
+  
+  .option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Nền trắng mờ */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 150px; /* Đặt chiều rộng cố định cho các mục chọn */
+  }
+  
+  .option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .option i {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #007BFF;
+  }
+  
+  .option span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1E90FF; /* Màu đỏ */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Khoảng cách phía trên nút */
+    text-align: center;
+  }
+  
+  .back-button:hover {
+    background-color: #1C86EE; /* Màu đỏ đậm hơn khi hover */
+  }

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/study_statistic.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- <div class="sidebar">
+        <h2>Material Dashboard</h2>
+        <ul>
+            <li><a href="#" class="active">Dashboard</a></li>
+            <li><a href="#">Tables</a></li>
+            <li><a href="#">Billing</a></li>
+            <li><a href="#">Virtual Reality</a></li>
+            <li><a href="#">Notifications</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+    </div> -->
+
+    <div class="main-content">
+        <div class="top-bar">
+            <h1>Thống kê</h1>
+        </div>
+
+        <div class="dashboard">
+            <div class="card blue">
+                <h3>Kế hoạch đã hoàn thành</h3>
+                <p>123</p>
+                <p class="percentage">+10 tuần trước</p>
+            </div>
+            <div class="card green">
+                <h3>Kế hoạch chưa hoàn thành</h3>
+                <p>8</p>
+                <p class="percentage">-10 tuần trước</p>
+            </div>
+            <div class="card gray">
+                <h3>GPA hệ 10 hiện tại</h3>
+                <p>8.2</p>
+            </div>
+            <div class="card blue">
+                <h3>GPA hệ 4 hiện tại</h3>
+                <p>3.32</p>
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="chart">
+                <h3>Kế hoạch đã hoàn thành</h3>
+                <canvas id="websiteViewsChart"></canvas>
+            </div>
+            <div class="chart">
+                <h3>Điểm hệ 10</h3>
+                <canvas id="dailySalesChart"></canvas>
+            </div>
+            <div class="chart">
+                <h3>Điểm hệ 4</h3>
+                <canvas id="completedTasksChart"></canvas>
+            </div>
+        </div>
+        <div class="projects">
+        </div>
+        <div>
+            <a href="/home" class="back-button">Quay về trang chủ</a>
+        </div>
+    </div>
+    <script src="/static/js/study_statistic.js"></script>
+</body>
+</html>

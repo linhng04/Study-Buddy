@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('/static/image/bg4.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+.info-table {
+    background-color: white;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 600px;
+}
+.info-table h3 {
+    margin-top: 0;
+}
+.info-table table {
+    width: 100%;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+.table-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 40px auto;
+    width: 95%;
+    border: 2px dashed #4CAF50;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.small-table {
+    flex: 1;
+    margin: 0 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.info-box h3{
+    background-color: #4CAF50;
+}
+.forecast-table button{
+    display: flex;
+    text-align: center;
+}
+@media (max-width: 600px) {
+    .info-table {
+        width: 100%; 
+    }
+    .table-container {
+        flex-direction: column; 
+        align-items: center; 
+    }
+    .small-table {
+        margin: 10px 0; 
+    }
+}
+.back-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1E90FF; /* Màu xanh biển */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.back-button:hover {
+    background-color: #1C86EE; /* Màu xanh biển đậm hơn khi hover */
+}
