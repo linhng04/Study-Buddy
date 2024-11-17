@@ -16,7 +16,7 @@
             color: white;
             text-align: center;
             padding: 20px;
-            position: relative;
+            height:130px;
         }
         .info-table {
             background-color: white;
@@ -52,7 +52,7 @@
         }
         .small-table {
             flex: 1;
-            margin: 0 10px;
+            margin: 0 30px;
             background-color: white;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -105,41 +105,61 @@
     
     <div class="table-container">
         <div class="small-table">
-            <h3 style="background-color: #baf0c6; margin: 0; padding: 8px; text-align: center;">Bảng 1</h3>
+            <h3 style="background-color: #baf0c6; margin: 0; padding: 8px; text-align: center;">HỌC CẢI THIỆN</h3>
             <table style="width: 100%; border-collapse: collapse;">
                 <tr style="background-color: #baf0c6;">
-                    <th style="border: 2px solid #4CAF50; padding: 8px;">Thông Tin 1</th>
+                    <td rowspan="3" style="border: 2px solid #4CAF50; padding: 8px;">
+                        <p style="text-align: center">MÔN D</p>
+                    </td>
                     <td style="border: 2px solid #4CAF50; padding: 8px;">
-                        <input type="text" placeholder="Nhập thông tin" style="width: 100%; border: none; background: transparent; outline: none;">
+                        Số môn: 
+                        <input type="text" placeholder="Nhập thông tin" style="width: 40%; border: none; background: transparent; outline: none;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 2px solid #4CAF50; padding: 8px;">
+                        Số tín chỉ: <input type="text" placeholder="Nhập thông tin" style="width: 40%; border: none; background: transparent; outline: none;">
                     </td>
                 </tr>
             </table>
         </div>
         <div class="small-table">
-            <h3 style="background-color: #baf0c6; margin: 0; padding: 8px; text-align: center;">Bảng 2</h3>
+            <h3 style="background-color: #baf0c6; margin: 0; padding: 8px; text-align: center;">HỌC LẠI</h3>
             <table style="width: 100%; border-collapse: collapse;">
                 <tr style="background-color: #baf0c6;">
-                    <th style="border: 2px solid #4CAF50; padding: 8px;">Thông Tin 2</th>
+                    <td rowspan="3" style="border: 2px solid #4CAF50; padding: 8px;">
+                        <p style="text-align: center">MÔN F</p>
+                    </td>
                     <td style="border: 2px solid #4CAF50; padding: 8px;">
-                        <input type="text" placeholder="Nhập thông tin" style="width: 100%; border: none; background: transparent; outline: none;">
+                        Số môn: 
+                        <input type="text" placeholder="Nhập thông tin" style="width: 40%; border: none; background: transparent; outline: none;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 2px solid #4CAF50; padding: 8px;">
+                        Số tín chỉ: <input type="text" placeholder="Nhập thông tin" style="width: 40%; border: none; background: transparent; outline: none;">
                     </td>
                 </tr>
             </table>
         </div>
         <div class="small-table">
-            <h3 style="background-color: #baf0c6; margin: 0; padding: 8px; text-align: center;">Bảng 3</h3>
+            <h3 style="background-color: #baf0c6; margin: 0; padding: 8px; text-align: center;">KẾT QUẢ CẢI THIỆN DỰ KIẾN</h3>
             <table style="width: 100%; border-collapse: collapse;">
                 <tr style="background-color: #baf0c6;">
-                    <th style="border: 2px solid #4CAF50; padding: 8px;">Thông Tin 3</th>
+                    <td rowspan="3" style="border: 2px solid #4CAF50; padding: 8px;">
+                        <p style="text-align: center">MÔN F</p>
+                    </td>
                     <td style="border: 2px solid #4CAF50; padding: 8px;">
-                        <input type="text" placeholder="Nhập thông tin" style="width: 100%; border: none; background: transparent; outline: none;">
+                        Số môn: 
+                        <input type="text" placeholder="Nhập thông tin" style="width: 40%; border: none; background: transparent; outline: none;">
                     </td>
                 </tr>
             </table>
         </div>
     </div>
+    
     <div class="info-box">
-        <h3 style="text-align: center;">Bảng kết quả dự kiến của kỳ học</h3>
+        <h3 style="text-align: center;">BẢNG KẾT QUẢ DỰ KIẾN CỦA KỲ HỌC</h3>
         <table class="forecast-table">
             <thead>
                 <tr>
@@ -183,7 +203,7 @@
         }
         .forecast-table th, .forecast-table td {
             border: 1px solid #ddd;
-            padding: 5px; /* Giảm khoảng cách bên trong ô */
+            padding: 5px;
             text-align: left;
             overflow: hidden;
             text-overflow: ellipsis;
