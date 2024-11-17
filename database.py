@@ -4,7 +4,7 @@ import atexit
 
 sql_endpoint = os.getenv('SQL_ENDPOINT', '127.0.0.1')
 sql_user = os.getenv('SQL_USER', 'root')
-sql_password = os.getenv('SQL_PASSWORD', '22010328@Men')
+sql_password = os.getenv('SQL_PASSWORD', 'root')
 
 print(sql_endpoint)
 print(sql_user)
