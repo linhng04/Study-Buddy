@@ -21,7 +21,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     if (username && password) {
         if (role === "Admin") {
             window.location.href = "/admin";  
-        } else if (role === "Tourist") {
+        } else if (role === "User") {
             window.location.href = "/home"; 
         } else {
             alert("Please select a valid role.");

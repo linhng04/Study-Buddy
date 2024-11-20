@@ -42,13 +42,12 @@ async def register_user(
 async def read_homepage():
     with open("templates/homepage.html", encoding="utf-8") as file:
         return HTMLResponse(content=file.read())
-# Trang lập kế hoạch học tập
+
 @app.get("/calendar", response_class=HTMLResponse)
 async def read_calendar():
     with open("templates/calendar.html",  encoding="utf-8") as file:
         return HTMLResponse(content=file.read())
 
-# # Trang tính GPA
 @app.get("/gpa", response_class=HTMLResponse)
 async def read_calendar():
     with open("templates/gpa.html",  encoding="utf-8") as file:

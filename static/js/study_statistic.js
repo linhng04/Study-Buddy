@@ -1,6 +1,6 @@
 
-const ctx1 = document.getElementById('websiteViewsChart').getContext('2d');
-const websiteViewsChart = new Chart(ctx1, {
+const ctx1 = document.getElementById('donePlan').getContext('2d');
+const donePlan = new Chart(ctx1, {
     type: 'bar',
     data: {
         labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
@@ -21,8 +21,8 @@ const websiteViewsChart = new Chart(ctx1, {
     }
 });
 
-const ctx2 = document.getElementById('dailySalesChart').getContext('2d');
-const dailySalesChart = new Chart(ctx2, {
+const ctx2 = document.getElementById('score10').getContext('2d');
+const score10 = new Chart(ctx2, {
     type: 'line',
     data: {
         labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
@@ -44,8 +44,8 @@ const dailySalesChart = new Chart(ctx2, {
     }
 });
 
-const ctx3 = document.getElementById('completedTasksChart').getContext('2d');
-const completedTasksChart = new Chart(ctx3, {
+const ctx3 = document.getElementById('score4').getContext('2d');
+const score4 = new Chart(ctx3, {
     type: 'line',
     data: {
         labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],

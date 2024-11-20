@@ -94,26 +94,3 @@ if __name__ == "__main__":
         print("Admin login successful")
     else:
         print("Admin login failed")
-
-
-def insert_study_plan(title, start_time, end_time):
-    # Implement the logic to insert a study plan into the database
-    # This is a placeholder implementation
-    try:
-        # Example: Insert into a hypothetical database
-        # db.execute("INSERT INTO study_plans (title, start_time, end_time) VALUES (?, ?, ?)", (title, start_time, end_time))
-        return True
-    except Exception as e:
-        print(f"Error inserting study plan: {e}")
-        return False
-
-def insert_gpa(subject, grade_10, grade_4, letter_grade, target_grade):
-    # Implement the logic to insert GPA into the database
-    # This is a placeholder implementation
-    try:
-        # Example: Insert into a hypothetical database
-        # db.execute("INSERT INTO gpa (subject, grade_10, grade_4, letter_grade, target_grade) VALUES (?, ?, ?, ?, ?)", (subject, grade_10, grade_4, letter_grade, target_grade))
-        return True
-    except Exception as e:
-        print(f"Error inserting GPA: {e}")
-        return False
